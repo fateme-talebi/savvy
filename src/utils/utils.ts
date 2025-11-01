@@ -5,9 +5,9 @@ export const colSpan = {
 }
 
 export const generateUniqueId = (): string => {
-    const dateString = Date.now().toString(36);
-    const randomness = Math.random().toString(36);
-    return dateString + randomness;
+    const timestamp = Date.now().toString(36);
+    const randomStr = Math.random().toString(36).substring(2, 10);
+    return timestamp + randomStr
 };
 
 export const getNow = (): string => {

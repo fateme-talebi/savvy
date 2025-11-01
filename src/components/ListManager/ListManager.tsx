@@ -5,7 +5,7 @@ import { DeleteOutlined } from "@ant-design/icons";
 import type { FormDataType } from "../../types/ListManager/types";
 
 const ListManager: FC = () => {
-    const [showCreateListModal, setShowCreateListModal] = useState(false);
+    const [showCreateEditListModal, setShowCreateEditListModal] = useState(false);
     const [formValues, setFormValues] = useState<FormDataType[]>([]);
     const [selectedRow, setSelectedRow] = useState<FormDataType>();
 
@@ -13,7 +13,7 @@ const ListManager: FC = () => {
         if (selectedRow) {
             setSelectedRow(undefined);
         }
-        setShowCreateListModal(true);
+        setShowCreateEditListModal(true);
     };
 
     const deleteAllItems = () => {
@@ -32,7 +32,7 @@ const ListManager: FC = () => {
 
     const handleEditRow = (row: FormDataType) => {
         setSelectedRow(row);
-        setShowCreateListModal(true);
+        setShowCreateEditListModal(true);
     };
 
     const handleDeleteRow = (rowKey: string) => {
@@ -107,11 +107,11 @@ const ListManager: FC = () => {
                     </Popconfirm>
                 }
             </Space>
-            {showCreateListModal && (
+            {showCreateEditListModal && (
                 <CreateEditListItemModal
                     selectedRow={selectedRow}
-                    showModal={showCreateListModal}
-                    setShowModal={setShowCreateListModal}
+                    showModal={showCreateEditListModal}
+                    setShowModal={setShowCreateEditListModal}
                     setFormValues={handleSetFormValues}
                 />
             )}
